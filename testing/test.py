@@ -167,7 +167,7 @@ def train_one_model(T, SNR_dB, num_layers):
     os.makedirs('checkpoints', exist_ok=True)
     save_path = f'../New_Model/checkpoints/RADMM_layers{num_layers}_nr1{NR1}_NR2{NR2}.pth'
     torch.save(model.state_dict(), save_path)
-    print(f"✅ Model saved to {save_path}")
+    print(f"Model saved to {save_path}")
     return loss_history
 
 
@@ -178,11 +178,9 @@ def test_model(checkpoint_path, T, SNR_dB, num_layers, num_samples=200):
     device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
     Wr = get_Wr(device)
 
-    # Load dataset
     dataset = UAVChannelDataset(num_samples=num_samples, snr_db=SNR_dB, T=T)
     loader = DataLoader(dataset, batch_size=32, shuffle=False)
 
-    # Load model
     model = RADMMNet(num_layers=num_layers, nr=NR).to(device)
     model.load_state_dict(torch.load(checkpoint_path, map_location=device))
     model.eval()

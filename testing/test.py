@@ -172,7 +172,7 @@ def train_one_model(T, SNR_dB, num_layers):
 
 
 
-def test_model(checkpoint_path, T, SNR_dB, num_layers, num_samples=200):
+def test_model(checkpoint_path, T, SNR_dB, num_layers, num_samples=2000):
     print(f"Testing: {checkpoint_path}")
 
     device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')

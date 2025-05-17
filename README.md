@@ -1,3 +1,1 @@
-# MLfW
-ML for Wireless course project
-
+# wireless-channel-estimation-using-deep-residual-learning
